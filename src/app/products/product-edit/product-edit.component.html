@@ -1,0 +1,40 @@
+<mat-card-title>{{ title }}</mat-card-title>
+<form [formGroup]="productForm">
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>Termék Neve</mat-label>
+        <input matInput formControlName="name">
+        <mat-error *ngIf="!productForm.valid">A termék névének megadása kötelező!
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>Termék Ára</mat-label>
+        <input matInput type="number" step="any" formControlName="price">
+        <mat-error *ngIf="!productForm.valid">A termék árának megadása kötelező!
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>Termék Leírása</mat-label>
+        <textarea matInput formControlName="description" cdkTextareaAutosize></textarea>
+        <mat-error *ngIf="!productForm.valid">A termék leírásának megadása kötelező!
+        </mat-error>
+    </mat-form-field>
+    <br>
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>Termék Létrehozási Dátuma</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="creationDate" [disabled]="!editMode">
+        <mat-error *ngIf="!productForm.valid">A termék létrehozási dátum megadása kötelező!
+        </mat-error>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <br>
+    <div style="width: 100%; display:flex">
+        <a mat-flat-button color="primary" [disabled]="!productForm.valid" (click)="onSubmit()">{{ editMode ?
+            'Szerkesztés Véglegesítése' :
+            'Termék Létrehozása' }}</a>
+        <span class="spacer"></span>
+        <a mat-button color="primary" (click)="onBack()">Back</a>
+    </div>
+</form>

@@ -1,0 +1,23 @@
+<mat-toolbar color="primary">
+    <span style="margin-right: 10px;">Termék Nyílvántartó</span>
+    <div style="width: 100%; display: flex" *ngIf="loggedInUser">
+        <a mat-flat-button color="primary" routerLinkActive="activated">
+        <span routerLink="/products">Termékeim</span>
+    </a>
+    <a mat-flat-button color="primary" routerLinkActive="activated" *ngIf="isAdmin">
+        <span routerLink="/users">Felhasználók</span>
+    </a>
+
+    <span class="spacer"></span>
+
+    <button mat-button [matMenuTriggerFor]="menu">
+        <span>{{ loggedInUser.name }}</span>
+        <mat-icon>expand_more</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu" xPosition="before">
+        <button mat-menu-item (click)="logOut()">Kijelentkezés</button>
+    </mat-menu>
+    
+    </div>
+</mat-toolbar>

@@ -1,0 +1,9 @@
+<h1 mat-dialog-title>Figyelmeztetés!</h1>
+<div mat-dialog-content>
+  <p>Biztosan törölni szeretnéd a következő terméket?</p>
+  <p>{{ data.product.id + ' - ' + data.product.name }}</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Nem</button>
+  <button mat-button (click)="onYesClick()" cdkFocusInitial>Igen</button>
+</div>

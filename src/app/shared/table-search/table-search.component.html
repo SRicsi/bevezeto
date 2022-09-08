@@ -1,0 +1,10 @@
+<form [formGroup]="searchForm">
+    <mat-card-subtitle>Termékek kereső</mat-card-subtitle>
+
+    <mat-form-field style="width: 50%;" appearance="fill">
+        <mat-label>Termék neve</mat-label>
+        <input matInput formControlName="name" (keyup)="onFilterChanged()">
+    </mat-form-field>
+
+    <mat-divider style="margin-top: 1.34375em;"></mat-divider>
+</form>
